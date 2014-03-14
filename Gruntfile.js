@@ -12,6 +12,16 @@ module.exports = function(grunt) {
         }
       }
     },
+    sass: {                              // Task
+      dist: {                            // Target
+        options: {                       // Target options
+          style: 'expanded'
+        },
+        files: {
+          'css/style.css': 'css/style.scss'
+        }
+      }
+    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -25,5 +35,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
-  grunt.registerTask('default', ['uglify']);
+  grunt.loadNpmTasks('grunt-contrib-sass');
+
+  grunt.registerTask('default', ['sass', 'coffee']);
 };
