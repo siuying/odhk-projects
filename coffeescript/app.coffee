@@ -5,7 +5,7 @@ App.API_URL = 'https://docs.google.com/spreadsheet/pub?key=0Allabz1cdhpXdDZaVW9B
 App.ProjectView = Ember.View.extend
   templateName: 'project'
 
-  style: (-> "background-image:url(#{this.project.thumbnailUrl}); background-size: 300px 200px;").property()
+  style: (-> "background-image:url(#{this.project.thumbnailUrl}); background-size: cover;").property()
 
   click: (event) ->
     window.open(@project.website)
