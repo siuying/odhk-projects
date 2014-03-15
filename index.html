@@ -14,15 +14,17 @@
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <div id="projects">
-    {{#each item in model}}
-      <div class="project">
-        <div class="snapshot" style="background-image:url({{item.thumbnail}})"></div>
-        <div class="desc">
-          <h3>{{item.name}}</h3>
+    <div id="container">
+      <div id="projects">
+      {{#each item in model}}
+        <div class="project">
+          <div class="snapshot" style="background-image:url({{item.thumbnail}})"></div>
+          <div class="desc">
+            <h3>{{item.name}}</h3>
+          </div>
         </div>
+      {{/each}}
       </div>
-    {{/each}}
     </div>
   </script>
 

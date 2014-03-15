@@ -2,8 +2,28 @@
   margin: 20px;
 }
 
-#projects .project {
+h2 {
+  text-align: center;
+}
+
+#container {
+  background: green;
+}
+#container #projects {
+  width: 920px;
+  text-align: center;
+  margin: 0 auto;
+}
+#container #projects .project {
   float: left;
-  width: 200px;
+  background: rgba(1, 1, 1, 0.5);
+  width: 300px;
   height: 200px;
+  margin: 3px;
+}
+#container #projects .project h3 {
+  text-align: center;
+  background: none repeat scroll 0 0 rgba(1, 1, 1, 0.1);
+  padding: 7px;
+  width: 0 auto;
 }

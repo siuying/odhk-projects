@@ -2,10 +2,30 @@
     margin: 20px;
 }
 
-#projects {
-  .project {
-    float: left;
-    width: 200px;
-    height: 200px;
-  }
+h2 {
+  text-align: center;
+}
+
+#container {
+  background: green;
+
+  #projects {
+    width: 920px;
+    text-align: center;
+    margin: 0 auto;
+    .project {
+      float: left;
+      background: rgba(1, 1, 1, 0.5);
+      width: 300px;
+      height: 200px;
+      margin: 3px;
+
+      h3 {
+        text-align: center;
+        background: none repeat scroll 0 0 rgba(1, 1, 1, 0.1);
+        padding: 7px;
+        width: 0 auto;
+      }
+    }
+  }  
 }
