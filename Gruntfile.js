@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           bare: true
         },
         files: {
-          'js/odhk-projects.js': ['coffeescript/*.coffee']
+          'js/app.js': ['coffeescript/*.coffee']
         }
       }
     },
@@ -22,13 +22,15 @@ module.exports = function(grunt) {
         }
       }
     },
-    uglify: {
+    concat: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        stripBanners: true,
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+          '<%= grunt.template.today("yyyy-mm-dd") %> */',
       },
-      build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
+      dist: {
+        src: ['js/libs/jquery-1.10.2.js', 'js/libs/jquery.csv-0.71.js', 'js/libs/handlebars-1.1.2.js', 'js/libs/ember-1.4.0.js', 'js/libs/ember-data.js', 'js/libs/md5.js', 'js/libs/underscore.js', 'js/app.js'],
+        dest: 'js/<%= pkg.name %>.js',
       }
     },
     watch: {
@@ -39,6 +41,15 @@ module.exports = function(grunt) {
           spawn: false,
         },
       },
+    },
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+      build: {
+        src: 'js/<%= pkg.name %>.js',
+        dest: 'js/<%= pkg.name %>.min.js'
+      }
     }
   });
 
@@ -46,6 +57,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['sass', 'coffee']);
+  grunt.registerTask('default', ['sass', 'coffee', 'concat', 'uglify']);
 };
