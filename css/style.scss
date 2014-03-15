@@ -13,19 +13,45 @@ h2 {
     width: 920px;
     text-align: center;
     margin: 0 auto;
+
     .project {
       float: left;
-      background: rgba(1, 1, 1, 0.5);
+
       width: 300px;
       height: 200px;
       margin: 3px;
 
-      h3 {
-        text-align: center;
-        background: none repeat scroll 0 0 rgba(1, 1, 1, 0.1);
-        padding: 7px;
-        width: 0 auto;
+      .desc {
+        width: 300px;
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.1);
+
+        h3 {
+          text-align: center;
+          background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+          margin: 0;
+          padding: 7px 0 0 0;
+          width: 0 auto;
+          opacity: 0;
+        }
+
+        h4 {
+          margin: 0;
+          background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+          padding: 0 0 7px 0;
+          font-weight: normal;
+          opacity: 0;
+        }
       }
+
+      &:hover {
+        h3, h4 {
+          opacity: 1;
+          transition: opacity 0.6s;
+        }
+
+      }
+
     }
   }  
 }

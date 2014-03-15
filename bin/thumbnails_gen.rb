@@ -13,6 +13,6 @@ CSV_URL = "https://docs.google.com/spreadsheet/pub?key=0Allabz1cdhpXdDZaVW9BaFJs
 data    = CSV.parse(open(CSV_URL).read, :headers => true)
 data.select{|row| row["website"] }.each do |row|
   puts "Generate thumbnail for #{row["name"]}"
-  gen_thumbnail(row["website"], "./images/bin")
+  gen_thumbnail(row["website"], "./images/thumbnails")
 end
 

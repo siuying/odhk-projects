@@ -16,21 +16,29 @@
   <script type="text/x-handlebars" id="index">
     <div id="container">
       <div id="projects">
-      {{#each item in model}}
-        <div class="project">
-          <div class="snapshot" style="background-image:url({{item.thumbnail}})"></div>
-          <div class="desc">
-            <h3>{{item.name}}</h3>
-          </div>
-        </div>
+      {{#each project in model}}
+        {{view App.ProjectView project=project }}
       {{/each}}
       </div>
     </div>
   </script>
 
+  <script type="text/x-handlebars" id="project">
+    <div class="project">
+      <div class="desc" {{bind-attr style=view.style}}>
+        <h3>{{view.project.name}}</h3>
+        <h4>{{view.project.contactName}}</h4>
+      </div>
+    </div>
+  </script>
+
   <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/jquery.csv-0.71.js"></script>
+  <script src="js/libs/underscore.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.4.0.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/md5.js"></script>
   <script src="js/odhk-projects.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>

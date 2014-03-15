@@ -16,14 +16,31 @@ h2 {
 }
 #container #projects .project {
   float: left;
-  background: rgba(1, 1, 1, 0.5);
   width: 300px;
   height: 200px;
   margin: 3px;
 }
-#container #projects .project h3 {
+#container #projects .project .desc {
+  width: 300px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#container #projects .project .desc h3 {
   text-align: center;
-  background: none repeat scroll 0 0 rgba(1, 1, 1, 0.1);
-  padding: 7px;
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+  margin: 0;
+  padding: 7px 0 0 0;
   width: 0 auto;
+  opacity: 0;
+}
+#container #projects .project .desc h4 {
+  margin: 0;
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+  padding: 0 0 7px 0;
+  font-weight: normal;
+  opacity: 0;
+}
+#container #projects .project:hover h3, #container #projects .project:hover h4 {
+  opacity: 1;
+  transition: opacity 0.6s;
 }
