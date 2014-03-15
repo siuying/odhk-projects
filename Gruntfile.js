@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['coffeescript/*.coffee', 'css/*.scss'],
-        tasks: ['sass', 'coffee', 'concat', 'uglify'],
+        tasks: ['sass', 'coffee', 'concat'],
         options: {
           spawn: false,
         },

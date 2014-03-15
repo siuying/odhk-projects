@@ -2,16 +2,13 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.ember-application {
-  margin: 20px;
-}
-
 h2 {
   text-align: center;
 }
 
 #container {
   background: green;
+  clear: both;
 }
 #container #projects {
   width: 920px;
@@ -47,4 +44,21 @@ h2 {
 #container #projects .project:hover h3, #container #projects .project:hover h4 {
   opacity: 1;
   transition: opacity 0.6s;
+}
+
+.footer-wrapper {
+  clear: both;
+  padding-top: 50px;
+}
+.footer-wrapper footer {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  height: 3em;
+}
+.footer-wrapper footer p {
+  padding-top: 1em;
+  margin: 0;
+  font-size: 14px;
 }

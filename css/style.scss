@@ -2,16 +2,13 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.ember-application {
-  margin: 20px;
-}
-
 h2 {
   text-align: center;
 }
 
 #container {
   background: green;
+  clear: both;
 
   #projects {
     width: 920px;
@@ -58,4 +55,23 @@ h2 {
 
     }
   }  
+}
+
+.footer-wrapper {
+  clear: both;
+  padding-top: 50px;
+
+  footer {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    height: 3em;
+
+    p {
+      padding-top: 1em;
+      margin: 0;
+      font-size: 14px;
+    }
+  }
 }
