@@ -1,4 +1,4 @@
-/*! odhk-projects - v0.1.0 - 2014-03-15 *//*!
+/*! odhk-projects - v0.1.0 - 2014-03-17 *//*!
  * jQuery JavaScript Library v1.10.2
  * http://jquery.com/
  *
@@ -66952,7 +66952,7 @@ C,15,a[50]),d=n(d,e,f,c,s,21,a[51]),c=n(c,d,e,f,A,6,a[52]),f=n(f,c,d,e,q,10,a[53
   }
 }).call(this);
 
-var App;
+var App, ProjectAPIAdapter;
 
 App = Ember.Application.create();
 
@@ -66961,7 +66961,7 @@ App.API_URL = 'https://docs.google.com/spreadsheet/pub?key=0Allabz1cdhpXdDZaVW9B
 App.ProjectView = Ember.View.extend({
   templateName: 'project',
   style: (function() {
-    return "background-image:url(" + this.project.thumbnailUrl + "); background-size: cover;";
+    return "background-image:url(" + this.project.bannerUrl + "); background-size: cover;";
   }).property(),
   click: function(event) {
     return window.open(this.project.website);
@@ -66970,22 +66970,50 @@ App.ProjectView = Ember.View.extend({
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-    return Ember.$.get(App.API_URL).then((function(_this) {
-      return function(data) {
-        var projects;
-        projects = _.filter(Ember.$.csv.toObjects(data), function(object) {
-          return object.website;
-        });
-        _.each(projects, function(object) {
-          var url, urlMD5;
-          if (!object.thumbnailUrl) {
-            url = object.website;
-            urlMD5 = CryptoJS.MD5(url);
-            return object.thumbnailUrl = "images/thumbnails/" + urlMD5 + ".png";
-          }
-        });
-        return projects;
-      };
-    })(this));
+    return Ember.$.get(App.API_URL).then(function(data) {
+      return ProjectAPIAdapter.projectsWithData(data);
+    });
   }
 });
+
+ProjectAPIAdapter = (function() {
+  function ProjectAPIAdapter() {}
+
+  ProjectAPIAdapter.API_MAPPINGS = {
+    "Project Name": "name",
+    "Description": "description",
+    "Project website (if applicable)": "website",
+    "Main contact name": "contactName",
+    "GitHub URL": "githubUrl",
+    "Project Banner": "bannerUrl"
+  };
+
+  ProjectAPIAdapter.projectsWithData = function(data) {
+    var projects;
+    projects = $.csv.toObjects(data);
+    _.each(projects, (function(_this) {
+      return function(object) {
+        var key, url, urlMD5, value, _ref;
+        _ref = _this.API_MAPPINGS;
+        for (key in _ref) {
+          value = _ref[key];
+          if (object[key]) {
+            object[value] = object[key];
+          }
+        }
+        if (!object.bannerUrl) {
+          url = object.website;
+          urlMD5 = CryptoJS.MD5(url);
+          return object.bannerUrl = "images/thumbnails/" + urlMD5 + ".png";
+        }
+      };
+    })(this));
+    projects = _.filter(projects, function(object) {
+      return object.website;
+    });
+    return projects;
+  };
+
+  return ProjectAPIAdapter;
+
+})();
