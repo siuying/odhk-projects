@@ -17,7 +17,7 @@ App.ProjectView = Ember.View.extend({
 App.IndexRoute = Ember.Route.extend({
   model: function() {
     return Ember.$.get(App.API_URL).then(function(data) {
-      return _.shuffle(ProjectAPIAdapter.projectsWithData(data));
+      return _.shuffle(ProjectAPIAdapter.projectsWithCSV(data));
     });
   }
 });
@@ -34,7 +34,7 @@ ProjectAPIAdapter = (function() {
     "Project Banner": "bannerUrl"
   };
 
-  ProjectAPIAdapter.projectsWithData = function(data) {
+  ProjectAPIAdapter.projectsWithCSV = function(data) {
     var projects;
     projects = $.csv.toObjects(data);
     _.each(projects, (function(_this) {

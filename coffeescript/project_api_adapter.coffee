@@ -7,14 +7,14 @@ class ProjectAPIAdapter
     "GitHub URL": "githubUrl"
     "Project Banner": "bannerUrl"
 
-  @projectsWithData: (data) ->
+  @projectsWithCSV: (data) ->
     projects = $.csv.toObjects(data)
 
     _.each projects, (object) =>
       for key, value of @API_MAPPINGS
         object[value] = object[key] if object[key]
 
-      # set a allback banner
+      # set a fallback banner
       unless object.bannerUrl
         url = object.website
         urlMD5 = CryptoJS.MD5(url)
