@@ -66971,7 +66971,7 @@ App.ProjectView = Ember.View.extend({
 App.IndexRoute = Ember.Route.extend({
   model: function() {
     return Ember.$.get(App.API_URL).then(function(data) {
-      return ProjectAPIAdapter.projectsWithData(data);
+      return _.shuffle(ProjectAPIAdapter.projectsWithData(data));
     });
   }
 });

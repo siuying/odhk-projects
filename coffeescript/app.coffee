@@ -13,4 +13,4 @@ App.ProjectView = Ember.View.extend
 App.IndexRoute = Ember.Route.extend
   model: ->
     Ember.$.get(App.API_URL).then (data) ->
-      ProjectAPIAdapter.projectsWithData(data)
+      _.shuffle ProjectAPIAdapter.projectsWithData(data)
